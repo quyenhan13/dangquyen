@@ -83,19 +83,22 @@ const HubScreen: React.FC = () => {
   const isVideo = (path: string) => path.includes('vid_') || path.toLowerCase().match(/\.(mp4|mov|webm)$/);
 
   return (
-    <div className="flex flex-col gap-6 pb-10">
+    <div className="flex flex-col gap-6 pb-24">
       <header 
-        className="px-6 flex justify-between items-end pb-4 border-b border-white/10 bg-background/95 backdrop-blur-xl"
-        style={{ paddingTop: 'calc(env(safe-area-inset-top) + 2rem)', minHeight: 'calc(env(safe-area-inset-top) + 5rem)' }}
+        className="fixed top-0 left-0 right-0 z-[100] px-6 flex justify-between items-end pb-4 border-b border-white/10 bg-background/95 backdrop-blur-xl"
+        style={{ paddingTop: 'env(safe-area-inset-top)', minHeight: 'calc(env(safe-area-inset-top) + 4.5rem)' }}
       >
         <div>
-          <h2 className="text-3xl font-black text-white">Private Hub</h2>
-          <p className="text-text-dim text-xs uppercase tracking-widest mt-1">Dữ liệu cá nhân của bạn</p>
+          <h2 className="text-2xl font-black text-white">Private Hub</h2>
+          <p className="text-[10px] text-primary font-black uppercase tracking-[0.2em] mt-0.5 flex items-center gap-1.5">
+             <span className="w-1 h-1 rounded-full bg-primary animate-pulse" />
+             Dữ liệu đám mây
+          </p>
         </div>
         <button 
           onClick={() => fileInputRef.current?.click()}
           disabled={uploading}
-          className={`bg-primary p-3 rounded-2xl shadow-lg shadow-primary/20 active:scale-90 transition-all ${uploading ? 'opacity-50 animate-pulse' : ''}`}
+          className={`bg-primary p-2.5 rounded-xl shadow-lg shadow-primary/20 active:scale-90 transition-all ${uploading ? 'opacity-50 animate-pulse' : ''}`}
         >
           {uploading ? (
             <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -116,7 +119,7 @@ const HubScreen: React.FC = () => {
 
       <div 
         className="px-6 grid grid-cols-2 gap-3"
-        style={{ paddingTop: '1rem' }}
+        style={{ paddingTop: 'calc(env(safe-area-inset-top) + 6rem)' }}
       >
         {loading ? (
           [1,2,3,4].map(i => <div key={i} className="aspect-square bg-card rounded-3xl animate-pulse" />)
