@@ -5,10 +5,10 @@ const config: CapacitorConfig = {
   appName: 'VTeen Premium',
   webDir: 'dist',
   server: {
-    url: 'http://192.168.1.8:3000',
-    cleartext: true
+    cleartext: true,
+    iosScheme: 'vteen',
+    allowsInlineMediaPlayback: true
   },
-  ios: {
     contentInset: 'never',
     backgroundColor: '#050510',
     allowsLinkPreview: false,

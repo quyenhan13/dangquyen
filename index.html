@@ -4,27 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1, user-scalable=no" />
-    <title>vteen-ios</title>
-    <!-- Smart Fallback Script -->
-    <script>
-      (function() {
-        // Chỉ chạy trên thiết bị thật (Capacitor)
-        if (window.location.hostname === 'localhost') {
-          const devServer = 'http://192.168.1.8:3000';
-          const controller = new AbortController();
-          const timeoutId = setTimeout(() => controller.abort(), 1000); // Đợi 1 giây
-
-          fetch(devServer, { mode: 'no-cors', signal: controller.signal })
-            .then(() => {
-              console.log('PC is Online! Redirecting to Live Mode...');
-              window.location.href = devServer;
-            })
-            .catch(() => {
-              console.log('PC is Offline. Staying in Local Mode.');
-            });
-        }
-      })();
-    </script>
+    <title>VTeen Premium</title>
   </head>
   <body>
     <div id="root"></div>
