@@ -143,7 +143,9 @@ const HubScreen: React.FC = () => {
                 src={`${CONFIG.SITE_BASE_URL}/stream.php?code=${item.short_code}`} 
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
                 onError={(e) => {
-                  (e.target as HTMLImageElement).src = 'https://placehold.co/400x400/111/444?text=Private';
+                  const target = e.target as HTMLImageElement;
+                  target.onerror = null; // Tránh lặp vô hạn
+                  target.src = `https://placehold.co/400x400/1e1e1e/8b5cf6?text=${encodeURIComponent(item.original_name.slice(0,10))}`;
                 }}
               />
               {isVideo(item.file_path) && (
