@@ -22,13 +22,17 @@ const HubScreen: React.FC = () => {
 
   const fetchHubData = async () => {
     try {
-      const response = await fetch(`${CONFIG.SITE_BASE_URL}/api/hub_data.php`, { credentials: 'include' });
+      const response = await fetch(`${CONFIG.API_BASE_URL}/hub_data.php`);
+      if (!response.ok) throw new Error(`Lỗi kết nối: ${response.status}`);
       const result = await response.json();
       if (result.status === 'success') {
         setItems(result.data);
+      } else {
+        throw new Error(result.message || 'Lỗi server');
       }
     } catch (err) {
       console.error(err);
+      // Bạn có thể hiện thông báo lỗi ở đây nếu muốn
     } finally {
       setLoading(false);
     }
