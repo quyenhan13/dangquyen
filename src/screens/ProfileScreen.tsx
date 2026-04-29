@@ -18,8 +18,18 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({ user, onLogout, onWatch }
     setHistory(getHistory());
   }, []);
 
+  const isLiveMode = window.location.hostname === '192.168.1.8';
+
   return (
     <div className="flex flex-col gap-8 pb-10">
+      {/* Live Mode Indicator */}
+      <div className="fixed top-4 left-1/2 -translate-x-1/2 z-[100] pointer-events-none">
+        <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-[8px] font-black uppercase tracking-[0.2em] backdrop-blur-xl border shadow-2xl ${isLiveMode ? 'bg-green-500/20 border-green-500/30 text-green-400' : 'bg-primary/20 border-primary/30 text-primary'}`}>
+          <div className={`w-1.5 h-1.5 rounded-full ${isLiveMode ? 'bg-green-400 animate-pulse shadow-[0_0_10px_#22c55e]' : 'bg-primary shadow-[0_0_10px_#8b5cf6]'}`} />
+          {isLiveMode ? 'LIVE PRO MAX' : 'STABLE MODE'}
+        </div>
+      </div>
+
       {/* Header User */}
       <div 
         className="px-6 flex items-center gap-5 pb-6 border-b border-white/10 bg-background/95 backdrop-blur-xl"
