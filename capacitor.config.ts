@@ -5,7 +5,7 @@ const config: CapacitorConfig = {
   appName: 'VTeen Premium',
   webDir: 'dist',
   server: {
-    url: 'https://yellow-tires-happen.loca.lt',
+    url: 'https://tender-chairs-kneel.loca.lt',
     cleartext: true
   },
     contentInset: 'never',
