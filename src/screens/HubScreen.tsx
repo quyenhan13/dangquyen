@@ -22,7 +22,7 @@ const HubScreen: React.FC = () => {
 
   const fetchHubData = async () => {
     try {
-      const response = await fetch(`${CONFIG.REAL_SERVER_URL}/api/hub_data.php`);
+      const response = await fetch(`${CONFIG.API_BASE_URL}/hub_data.php`);
       if (!response.ok) throw new Error(`Lỗi kết nối: ${response.status}`);
       const result = await response.json();
       if (result.status === 'success') {
@@ -46,7 +46,7 @@ const HubScreen: React.FC = () => {
     formData.append('file', file);
 
     try {
-      const response = await fetch(`${CONFIG.REAL_SERVER_URL}/api/upload.php`, {
+      const response = await fetch(`${CONFIG.API_BASE_URL}/upload.php`, {
         method: 'POST',
         body: formData,
       });
@@ -138,7 +138,7 @@ const HubScreen: React.FC = () => {
               className="group relative aspect-square rounded-3xl overflow-hidden bg-card border border-white/5 cursor-pointer active:scale-95 transition-all"
             >
               <img 
-                src={`${CONFIG.SITE_BASE_URL}/stream.php?code=${item.short_code}&t=${Date.now()}`} 
+                src={`${CONFIG.REAL_SERVER_URL}/stream.php?code=${item.short_code}&t=${Date.now()}`} 
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
@@ -200,11 +200,11 @@ const HubScreen: React.FC = () => {
                     controls 
                     playsInline 
                     className="w-full h-full object-contain"
-                    src={`${CONFIG.SITE_BASE_URL}/stream.php?code=${selectedItem.short_code}`}
+                    src={`${CONFIG.REAL_SERVER_URL}/stream.php?code=${selectedItem.short_code}`}
                   />
                 ) : (
                   <img 
-                    src={`${CONFIG.SITE_BASE_URL}/stream.php?code=${selectedItem.short_code}`} 
+                    src={`${CONFIG.REAL_SERVER_URL}/stream.php?code=${selectedItem.short_code}`} 
                     className="w-full h-full object-contain"
                     alt={selectedItem.original_name}
                   />
