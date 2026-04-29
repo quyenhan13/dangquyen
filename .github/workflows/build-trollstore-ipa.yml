@@ -9,9 +9,6 @@ on:
 jobs:
   build-ios:
     runs-on: macos-15
-    defaults:
-      run:
-        working-directory: vteen-ios
 
     steps:
       - name: Checkout
@@ -22,7 +19,6 @@ jobs:
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: vteen-ios/package-lock.json
 
       - name: Install dependencies
         run: npm install
