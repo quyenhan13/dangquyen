@@ -10,25 +10,26 @@ export default defineConfig({
   ],
   server: {
     host: true,
-    port: 3000,
+    port: 3001,
     proxy: {
-      // Đổi tất cả về localhost để bạn thấy phim trong máy mình
       '/api': {
         target: 'http://localhost',
         changeOrigin: true,
-        secure: false,
+        rewrite: (path) => `/vteen/vteen-backup${path}`,
+      },
+      '/player': {
+        target: 'http://localhost',
+        changeOrigin: true,
         rewrite: (path) => `/vteen/vteen-backup${path}`,
       },
       '/embed.php': {
         target: 'http://localhost',
         changeOrigin: true,
-        secure: false,
         rewrite: (path) => `/vteen/vteen-backup${path}`,
       },
       '/uploads': {
         target: 'http://localhost',
         changeOrigin: true,
-        secure: false,
         rewrite: (path) => `/vteen/vteen-backup${path}`,
       }
     }
