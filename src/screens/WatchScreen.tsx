@@ -173,22 +173,11 @@ const WatchScreen: React.FC<WatchScreenProps> = ({ slug, onBack, onUnauthorized 
   }
 
   return (
-    <motion.div 
-      initial={{ y: '100%' }}
-      animate={{ y: 0 }}
-      exit={{ y: '100%' }}
-      drag="y"
-      dragConstraints={{ top: 0 }}
-      dragElastic={0.2}
-      onDragEnd={(_, info) => {
-        if (info.offset.y > 150) onBack();
-      }}
-      className="fixed inset-0 bg-background z-[1000] flex flex-col overflow-hidden overscroll-none"
-    >
-      {/* Header Bar */}
+    <div className="fixed inset-0 bg-background z-[1000] flex flex-col overflow-hidden">
+      {/* Header Bar - Fixed to top */}
       <div 
-        className="landscape:hidden shrink-0 px-4 pb-4 flex items-center gap-3 border-b border-white/10 bg-background/95 backdrop-blur-xl relative z-[100]"
-        style={{ paddingTop: 'calc(env(safe-area-inset-top) + 0.5rem)', minHeight: 'calc(env(safe-area-inset-top) + 4rem)' }}
+        className="fixed top-0 left-0 right-0 z-[1001] px-4 py-3 flex items-center gap-3 border-b border-white/10 bg-background/95 backdrop-blur-xl"
+        style={{ paddingTop: 'env(safe-area-inset-top)' }}
       >
         <button 
           onClick={onBack}
@@ -200,23 +189,25 @@ const WatchScreen: React.FC<WatchScreenProps> = ({ slug, onBack, onUnauthorized 
         </button>
         <div className="flex-1 min-w-0">
           <h2 className="text-sm font-bold text-white truncate">{details.title}</h2>
-          <p className="text-[10px] text-primary font-bold uppercase tracking-widest">Đang xem • Tập {currentEp?.episode}</p>
+          <p className="text-[10px] text-primary font-bold uppercase tracking-widest">Tập {currentEp?.episode}</p>
         </div>
       </div>
 
       {/* Video Player Area */}
-      <div className="relative z-10 w-full shrink-0 landscape:h-screen landscape:w-screen portrait:aspect-video portrait:max-h-[42vh] bg-black shadow-2xl portrait:border-b border-white/5 flex flex-col items-center justify-center overflow-hidden">
+      <div 
+        className="relative w-full aspect-video bg-black z-50 overflow-hidden"
+        style={{ marginTop: 'calc(env(safe-area-inset-top) + 4rem)' }}
+      >
         {currentEp && currentEmbedUrl ? (
-          <>
-            <iframe 
-              key={`${currentEp.episode}-${activeServer}`}
-              src={`${CONFIG.SITE_BASE_URL}/${currentEmbedUrl}`}
-              className="absolute inset-0 w-full h-full border-0 bg-black z-20"
-              allowFullScreen
-              allow="autoplay; encrypted-media"
-              title="Player"
-            />
-          </>
+          <iframe 
+            key={`${currentEp.episode}-${activeServer}`}
+            src={`${CONFIG.SITE_BASE_URL}/${currentEmbedUrl}`}
+            className="absolute inset-0 w-full h-full border-0 bg-black"
+            allowFullScreen
+            allow="autoplay; encrypted-media"
+            title="Player"
+          />
+        ) : (
         ) : (
           <div className="flex flex-col items-center gap-2">
             <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
