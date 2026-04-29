@@ -10,7 +10,7 @@
       (function() {
         // Chỉ chạy trên thiết bị thật (Capacitor)
         if (window.location.hostname === 'localhost') {
-          const devServer = 'http://192.168.1.8:5173';
+          const devServer = 'http://192.168.1.8:3000';
           const controller = new AbortController();
           const timeoutId = setTimeout(() => controller.abort(), 1000); // Đợi 1 giây
 

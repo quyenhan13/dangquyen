@@ -10,7 +10,7 @@ export default defineConfig({
   ],
   server: {
     host: true,
-    port: 5173,
+    port: 3000,
     proxy: {
       // Đổi tất cả về localhost để bạn thấy phim trong máy mình
       '/api': {
