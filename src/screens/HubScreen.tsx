@@ -158,6 +158,7 @@ const HubScreen: React.FC = () => {
               <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="absolute bottom-3 left-3 right-3 translate-y-2 group-hover:translate-y-0 transition-transform">
                 <p className="text-[10px] font-bold text-white truncate">{item.original_name}</p>
+                <p className="text-[8px] text-primary font-black uppercase opacity-60">Code: {item.short_code}</p>
               </div>
             </div>
           ))
