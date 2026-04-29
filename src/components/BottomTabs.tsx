@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 
 interface Tab {
@@ -41,28 +42,32 @@ const BottomTabs: React.FC<BottomTabsProps> = ({ activeTab, onTabChange }) => {
   };
 
   return (
-    <div 
-      className="fixed bottom-0 left-0 right-0 z-50 px-4 pb-3 pt-1 bg-linear-to-t from-background to-transparent pointer-events-none"
-      style={{ bottom: 0 }}
-    >
-      <nav className="glass flex items-center justify-around h-11 rounded-2xl px-3 shadow-2xl pointer-events-auto">
-        {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => handleTabClick(tab.id)}
-            className={`flex flex-col items-center justify-center gap-0.5 transition-all duration-300 w-14 ${
-              activeTab === tab.id ? 'text-primary scale-110' : 'text-text-dim hover:text-white'
-            }`}
-          >
-            <div className={`p-1 rounded-lg transition-colors [&_svg]:h-5 [&_svg]:w-5 ${activeTab === tab.id ? 'bg-primary/10' : ''}`}>
-              {tab.icon}
-            </div>
-            <span className={`text-[9px] font-black uppercase tracking-tighter leading-none ${activeTab === tab.id ? 'text-primary' : 'text-text-dim'}`}>
-              {tab.label}
-            </span>
-          </button>
-        ))}
-      </nav>
+    <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-md">
+      <div className="glass-panel flex items-center justify-around py-3 px-4 rounded-[2.5rem] shadow-2xl shadow-black/50">
+        {tabs.map((tab) => {
+          const isActive = activeTab === tab.id;
+          return (
+            <button
+              key={tab.id}
+              onClick={() => handleTabClick(tab.id)}
+              className={`relative flex flex-col items-center gap-1 p-2 transition-all duration-300 ${isActive ? 'scale-110' : 'opacity-40 grayscale'}`}
+            >
+              <div className={`transition-all ${isActive ? 'bg-primary text-white p-2.5 rounded-2xl shadow-lg shadow-primary/40' : 'text-white'}`}>
+                {tab.icon}
+              </div>
+              <span className={`text-[8px] font-black uppercase tracking-widest transition-all ${isActive ? 'text-primary' : 'text-white'}`}>
+                {tab.label}
+              </span>
+              {isActive && (
+                <motion.div 
+                  layoutId="activeTab"
+                  className="absolute -bottom-1 w-1 h-1 bg-primary rounded-full shadow-[0_0_10px_#8b5cf6]"
+                />
+              )}
+            </button>
+          );
+        })}
+      </div>
     </div>
   );
 };

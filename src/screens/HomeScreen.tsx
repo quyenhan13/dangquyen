@@ -67,29 +67,37 @@ const HomeScreen: React.FC<HomeProps> = ({ onWatch }) => {
   return (
     <div className="flex flex-col gap-4 pb-10">
       {/* Top Bar giống phim.php */}
-      <header 
-        className="sticky top-0 z-50 px-6 pb-3 flex items-center justify-between border-b border-white/5 bg-background/95 backdrop-blur-xl"
-        style={{ paddingTop: 'calc(env(safe-area-inset-top) + 2rem)', minHeight: 'calc(env(safe-area-inset-top) + 5rem)' }}
+      <div 
+        className="sticky top-0 z-50 px-6 pb-6 pt-12 flex flex-col gap-5 bg-background/80 backdrop-blur-3xl border-b border-white/5"
+        style={{ paddingTop: 'calc(env(safe-area-inset-top) + 1.5rem)' }}
       >
-        <h1 className="text-xl font-black text-primary tracking-widest uppercase">VTEEN.IO.VN</h1>
-        <Avatar size={36} isAdmin={true} />
-      </header>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-xl bg-linear-to-tr from-primary to-primary-variant flex items-center justify-center shadow-lg shadow-primary/20">
+              <span className="text-white font-black text-lg">V</span>
+            </div>
+            <h1 className="text-2xl font-black tracking-tighter text-white">
+              V<span className="bg-linear-to-r from-primary to-primary-variant bg-clip-text text-transparent">TEEN</span>
+              <span className="ml-1 text-[10px] bg-vip text-black px-1.5 py-0.5 rounded-sm align-top font-black">PRO</span>
+            </h1>
+          </div>
+          <Avatar size={36} isAdmin={true} />
+        </div>
 
-      {/* Search Input giống phim.php */}
-      <div className="px-6">
+        {/* Search Bar Premium */}
         <div className="relative group">
-          <input 
-            type="text" 
-            placeholder="Tìm tên phim..." 
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-card/50 border border-border-glass rounded-2xl py-4 px-6 text-sm focus:outline-none focus:border-primary transition-all text-white placeholder:text-text-dim"
-          />
-          <div className="absolute right-4 top-1/2 -translate-y-1/2 text-text-dim">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-5 h-5">
-              <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-text-dim group-focus-within:text-primary transition-colors">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="w-4 h-4">
+              <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
             </svg>
           </div>
+          <input 
+            type="text" 
+            placeholder="Tìm kiếm phim, diễn viên..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full bg-white/5 border border-white/10 rounded-2xl py-3.5 pl-12 pr-4 text-sm font-bold text-white placeholder:text-text-dim/50 focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all shadow-inner"
+          />
         </div>
       </div>
 

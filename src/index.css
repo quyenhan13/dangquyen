@@ -1,15 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #050510;
-  --color-background-soft: #0B0B18;
-  --color-card: rgba(255, 255, 255, 0.08);
-  --color-border-glass: rgba(255, 255, 255, 0.12);
-  --color-primary: #8B5CF6;
+  --color-background: #050505;
+  --color-background-soft: #0f0f12;
+  --color-card: #0f0f12;
+  --color-border-glass: rgba(255, 255, 255, 0.08);
+  --color-primary: #8b5cf6;
+  --color-primary-variant: #6366f1;
   --color-secondary: #EF4444;
-  --color-vip: #FACC15;
+  --color-vip: #fde047;
   --color-success: #22C55E;
-  --color-text-dim: #A1A1AA;
+  --color-text-dim: #9ca3af;
 }
 
 :root {
@@ -71,3 +72,18 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+.premium-border {
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
+}
+
+.tab-active {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(99, 102, 241, 0.1));
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.1);
+}
+
