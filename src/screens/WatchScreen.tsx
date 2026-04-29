@@ -187,8 +187,8 @@ const WatchScreen: React.FC<WatchScreenProps> = ({ slug, onBack, onUnauthorized 
     >
       {/* Header Bar */}
       <div 
-        className="landscape:hidden shrink-0 px-4 pb-4 flex items-center gap-3 border-b border-white/10 bg-background/95 backdrop-blur-xl"
-        style={{ paddingTop: 'calc(env(safe-area-inset-top) + 2.5rem)', minHeight: 'calc(env(safe-area-inset-top) + 6rem)' }}
+        className="landscape:hidden shrink-0 px-4 pb-4 flex items-center gap-3 border-b border-white/10 bg-background/95 backdrop-blur-xl relative z-[100]"
+        style={{ paddingTop: 'calc(env(safe-area-inset-top) + 0.5rem)', minHeight: 'calc(env(safe-area-inset-top) + 4rem)' }}
       >
         <button 
           onClick={onBack}
@@ -205,13 +205,13 @@ const WatchScreen: React.FC<WatchScreenProps> = ({ slug, onBack, onUnauthorized 
       </div>
 
       {/* Video Player Area */}
-      <div className="relative z-50 w-full shrink-0 landscape:h-screen landscape:w-screen portrait:aspect-video portrait:max-h-[42vh] bg-black shadow-2xl portrait:border-b border-white/5 flex flex-col items-center justify-center overflow-hidden">
+      <div className="relative z-10 w-full shrink-0 landscape:h-screen landscape:w-screen portrait:aspect-video portrait:max-h-[42vh] bg-black shadow-2xl portrait:border-b border-white/5 flex flex-col items-center justify-center overflow-hidden">
         {currentEp && currentEmbedUrl ? (
           <>
             <iframe 
               key={`${currentEp.episode}-${activeServer}`}
               src={`${CONFIG.SITE_BASE_URL}/${currentEmbedUrl}`}
-              className="absolute inset-0 w-full h-full border-0 bg-black"
+              className="absolute inset-0 w-full h-full border-0 bg-black z-20"
               allowFullScreen
               allow="autoplay; encrypted-media"
               title="Player"
