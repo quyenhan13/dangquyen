@@ -47,10 +47,9 @@ const HubScreen: React.FC = () => {
     formData.append('file', file);
 
     try {
-      const response = await fetch(`${CONFIG.SITE_BASE_URL}/api/upload.php`, {
+      const response = await fetch(`${CONFIG.API_BASE_URL}/upload.php`, {
         method: 'POST',
         body: formData,
-        credentials: 'include'
       });
       const result = await response.json();
       if (result.status === 'success') {
