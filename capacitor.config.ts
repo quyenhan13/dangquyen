@@ -5,7 +5,7 @@ const config: CapacitorConfig = {
   appName: 'VTeen Premium',
   webDir: 'dist',
   server: {
-    url: 'https://vteen-pro-max.loca.lt',
+    url: 'http://192.168.1.8:3001',
     cleartext: true
   },
     contentInset: 'never',
