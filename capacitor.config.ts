@@ -5,9 +5,8 @@ const config: CapacitorConfig = {
   appName: 'VTeen Premium',
   webDir: 'dist',
   server: {
-    cleartext: true,
-    iosScheme: 'vteen',
-    allowsInlineMediaPlayback: true
+    url: 'https://yellow-tires-happen.loca.lt',
+    cleartext: true
   },
     contentInset: 'never',
     backgroundColor: '#050510',
