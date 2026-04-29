@@ -281,7 +281,7 @@ const WatchScreen: React.FC<WatchScreenProps> = ({ slug, onBack, onUnauthorized 
           </p>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
