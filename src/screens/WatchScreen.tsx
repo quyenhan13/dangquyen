@@ -208,7 +208,6 @@ const WatchScreen: React.FC<WatchScreenProps> = ({ slug, onBack, onUnauthorized 
             title="Player"
           />
         ) : (
-        ) : (
           <div className="flex flex-col items-center gap-2">
             <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
             <span className="text-[10px] text-text-dim uppercase tracking-widest">Đang kết nối trình phát...</span>
