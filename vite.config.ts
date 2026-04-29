@@ -13,24 +13,20 @@ export default defineConfig({
     port: 3001,
     proxy: {
       '/api': {
-        target: 'http://localhost',
+        target: 'https://vteen.io.vn',
         changeOrigin: true,
-        rewrite: (path) => `/vteen/vteen-backup${path}`,
       },
       '/player': {
-        target: 'http://localhost',
+        target: 'https://vteen.io.vn',
         changeOrigin: true,
-        rewrite: (path) => `/vteen/vteen-backup${path}`,
       },
       '/embed.php': {
-        target: 'http://localhost',
+        target: 'https://vteen.io.vn',
         changeOrigin: true,
-        rewrite: (path) => `/vteen/vteen-backup${path}`,
       },
       '/uploads': {
-        target: 'http://localhost',
+        target: 'https://vteen.io.vn',
         changeOrigin: true,
-        rewrite: (path) => `/vteen/vteen-backup${path}`,
       }
     }
   }
