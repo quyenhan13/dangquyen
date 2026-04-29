@@ -36,7 +36,7 @@ export const saveToHistory = async (item: Omit<HistoryItem, 'watchedAt'>) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        ...getAuthHeader()
+        ...(getAuthHeader() as Record<string, string>)
       },
       body: JSON.stringify(item),
       credentials: 'include'
@@ -59,7 +59,7 @@ export const getHistory = (): HistoryItem[] => {
 export const syncHistoryWithServer = async () => {
   try {
     const response = await fetch(`${CONFIG.API_BASE_URL}/sync_history.php`, {
-      headers: getAuthHeader(),
+      headers: getAuthHeader() as Record<string, string>,
       credentials: 'include'
     });
     const result = await response.json();

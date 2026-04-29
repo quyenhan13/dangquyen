@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { CONFIG } from './config'
 import BottomTabs from './components/BottomTabs'
 import HomeScreen from './screens/HomeScreen'
 import WatchScreen from './screens/WatchScreen'

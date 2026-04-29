@@ -43,7 +43,7 @@ const syncFavAction = async (item: FavoriteItem, action: 'add' | 'remove') => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        ...getAuthHeader()
+        ...(getAuthHeader() as Record<string, string>)
       },
       body: JSON.stringify({ ...item, action }),
       credentials: 'include'
@@ -66,7 +66,7 @@ export const getFavorites = (): FavoriteItem[] => {
 export const syncFavoritesWithServer = async () => {
   try {
     const response = await fetch(`${CONFIG.API_BASE_URL}/sync_favorites.php`, {
-      headers: getAuthHeader(),
+      headers: getAuthHeader() as Record<string, string>,
       credentials: 'include'
     });
     const result = await response.json();
