@@ -22,7 +22,7 @@ const HubScreen: React.FC = () => {
 
   const fetchHubData = async () => {
     try {
-      const response = await fetch(`${CONFIG.API_BASE_URL}/hub_data.php`);
+      const response = await fetch(`${CONFIG.REAL_SERVER_URL}/api/hub_data.php`);
       if (!response.ok) throw new Error(`Lỗi kết nối: ${response.status}`);
       const result = await response.json();
       if (result.status === 'success') {
@@ -32,7 +32,6 @@ const HubScreen: React.FC = () => {
       }
     } catch (err) {
       console.error(err);
-      // Bạn có thể hiện thông báo lỗi ở đây nếu muốn
     } finally {
       setLoading(false);
     }
@@ -47,7 +46,7 @@ const HubScreen: React.FC = () => {
     formData.append('file', file);
 
     try {
-      const response = await fetch(`${CONFIG.API_BASE_URL}/upload.php`, {
+      const response = await fetch(`${CONFIG.REAL_SERVER_URL}/api/upload.php`, {
         method: 'POST',
         body: formData,
       });

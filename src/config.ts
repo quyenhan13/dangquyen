@@ -2,7 +2,8 @@
 
 export const CONFIG = {
   API_BASE_URL: window.location.origin + '/api',
-  SITE_BASE_URL: 'https://vteen.io.vn',
+  SITE_BASE_URL: window.location.origin,
+  REAL_SERVER_URL: 'https://vteen.io.vn',
   APP_NAME: 'VTeen Pro',
   VERSION: '2.0.0'
 };
