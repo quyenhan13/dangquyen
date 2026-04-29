@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'vn.io.vteen.app',
-  appName: 'VTeen',
+  appId: 'vn.io.vteen.v2',
+  appName: 'VTeen Pro',
   webDir: 'dist',
   server: {
     // Để trống url để chạy app React local. 
