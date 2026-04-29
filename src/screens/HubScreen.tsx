@@ -140,11 +140,11 @@ const HubScreen: React.FC = () => {
               className="group relative aspect-square rounded-3xl overflow-hidden bg-card border border-white/5 cursor-pointer active:scale-95 transition-all"
             >
               <img 
-                src={`${CONFIG.SITE_BASE_URL}/stream.php?code=${item.short_code}`} 
+                src={`${CONFIG.SITE_BASE_URL}/stream.php?code=${item.short_code}&t=${Date.now()}`} 
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
-                  target.onerror = null; // Tránh lặp vô hạn
+                  target.onerror = null; 
                   target.src = `https://placehold.co/400x400/1e1e1e/8b5cf6?text=${encodeURIComponent(item.original_name.slice(0,10))}`;
                 }}
               />
